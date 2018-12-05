@@ -24,7 +24,23 @@ procedure tp2 is
 	return maliste = NULL;
   END est_vide;
 
-  PROCEDURE insereenfin(maliste : in out ptliste;n);
+  PROCEDURE Insere_Fin(liste: IN OUT ptliste;
+                        Elmt : in integer)  IS
+  -- Cette procédure ajoute un element en fin de liste.
+      -- IN OUT
+         -- FileF: La Liste où l'element sera ajouté.
+      -- IN
+         -- Elt: L'élément à ajouter.
+
+   BEGIN
+      IF est_vide(FileF) THEN
+         liste := NEW Noeud'(Elmt,NULL);
+
+      ELSE
+         while liste
+      END IF;
+
+   END Insere_Fin;
   PROCEDURE  traiter (montab : IN OUT Tab ; n : integer) is
   indice : integer;
   BEGIN
