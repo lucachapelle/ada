@@ -85,7 +85,7 @@ begin
         Get(n) ;
 	fini := n = -1;
    while not fini loop	
-	if n > 0 then 
+	if n >= 0 then 
         	traiter(montab,n);
 	end if;
         Get(n) ;
