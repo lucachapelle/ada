@@ -39,7 +39,15 @@ begin
 	end if;	
 END afficheliste;
   
-Function compte( lsite : ptnoeud
+Function compte( liste : ptnoeud; cpt : integer) return integer is
+Begin
+	if (liste = null) then 
+		return cpt;
+	else 
+		return compte(liste.suiv,cpt+1);
+	end if;
+end compte;
+
 PROCEDURE ajouttete(FileF: IN OUT File; Elmt: IN integer) IS
       Pt_Int: ptNoeud;
 
@@ -69,21 +77,61 @@ PROCEDURE ajouttete(FileF: IN OUT File; Elmt: IN integer) IS
 
    END ajoutfin;
 
+PROCEDURE ajoutrang( mafile : IN OUT File; rang : IN Integer; Elt : IN Integer) IS
+	maliste : ptNoeud := mafile.first;
+	ptint : ptNoeud;
+Begin
+	if rang = 1 then
+		ajouttete(mafile,elt);
+	else 
+		FOR i IN 1..rang-2 LOOP	
+			maliste := maliste.suiv;
+		end loop;
+	ptint := maliste.suiv;
+	maliste.suiv := new Noeud'(elt,ptint);
+	end if;
+end ajoutrang;
+
+PROCEDURE supoccu( mafile : IN OUT File; Elt : IN Integer) IS
+maliste : ptNoeud := mafile.first;
+ptprec : ptNoeud := mafile.first;
+trouve : boolean := False;
+Begin
+	if maliste.info = ELT  then
+		trouve := true;
+	end if;
+	maliste := maliste.suiv;
+	while not (maliste = NUll) loop
+
+		if maliste.info = ELT   then
+			ptprec.suiv := maliste.suiv;
+			maliste := maliste.suiv;
+			trouve := true;
+		else 
+			maliste := maliste.suiv;
+			ptprec := ptprec.suiv;
+		end if;
+
+
+	end loop;
+	if not trouve then 
+		put ("pas d element dans la liste");
+	end if;
+end supoccu;
    PROCEDURE Traiter (
          ChoixF   : IN     Integer;
          maliste : IN OUT File;
 	fini : IN OUT boolean) IS
-  elem : integer;
+  elem , rang: integer;
 	res : integer;
-	compteur : integer := 0 ;
    BEGIN
       CASE ChoixF IS
          WHEN 1 =>
 		afficheliste(maliste);
          WHEN 2 =>
-		res = compte(maliste.first,compteur);
-		Put("il y a " );Put(res);Put(" nombre(s) dans ma liste" )
-		New_Line
+		res := compte(maliste.first,0);
+		Put("il y a " );Put(Integer'Image(res));Put(" nombres dans ma liste" );
+		New_Line;
          WHEN 3 =>
 		Put("veuillez entrer un nombre" );
 		New_Line;
@@ -97,11 +145,26 @@ PROCEDURE ajouttete(FileF: IN OUT File; Elmt: IN integer) IS
       		New_Line;
 		ajoutfin(maliste,elem);
          WHEN 5 =>
-		put(1);
-		--ajoutrang(maliste);
+		Put("veuillez entrer un rang" );
+		New_Line;
+		Get(rang);
+      		New_Line;
+		if ((rang > compte(maliste.first,0) + 2) or (rang < 1)) then 
+			Put("rang invalide" );
+			New_Line;
+		else
+			Put("veuillez entrer un element" );
+			New_Line;
+			Get(elem);
+      			New_Line;
+			ajoutrang(maliste,rang,elem);
+		end if;
          WHEN 6 =>
-		put(1);
-		--supoccu(maliste);
+		Put("veuillez entrer un nombre" );
+		New_Line;
+		Get(elem);
+      		New_Line;
+		supoccu(maliste,elem);
          WHEN 7 =>
 		put(1);
 		--ordonne(maliste);
