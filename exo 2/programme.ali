@@ -1,0 +1,90 @@
+V "GNAT Lib v7"
+M P W=b
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IO
+RV NO_LOCAL_ALLOCATORS
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+
+U exo2%b		programme.adb		86092706 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+
+D ada.ads		20170106103348 76789da1 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-inteio.ads		20070406091342 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D programme.adb		20181205095521 482f5b76 exo2%b
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D system.ads		20170510173650 4635ec04 system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-imgint.ads		20090409150019 02dbe0c2 system.img_int%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 10|1r6 1r19 2r5 2r18
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 10|1w23 2r22
+X 7 a-textio.ads
+49K13*Text_IO 471e16 10|1w10 2r9
+166U14*New_Line 10|85s17 87s17 91s17 93s17 108s13 117s7 119s7 121s7 123s7
+. 125s7 127s7 129s7 131s7 133s7 135s7 137s7
+242U14*Put 10|32s17 34s13 38s17 84s17 90s17 107s13 118s7 120s7 122s7 124s7
+. 126s7 128s7 130s7 132s7
+X 8 a-tiinio.ads
+56U14*Get 10|86s17[3|18] 92s17[3|18] 134s7[3|18]
+66U14*Put 10|81s17[3|18] 96s17[3|18] 99s17[3|18] 102s17[3|18]
+X 10 programme.adb
+4U11*exo2 4b11 140l5 140t9
+5R6 Noeud 6r24 7c6 11e11 47r29 52r29 61r29 65r33
+6P6 ptNoeud(5R6) 10r9 15r10 16r10 28r17 43r15
+9i2 info{integer} 34r37
+10p2 suiv{6P6} 35r28 65m21 66r35
+13R6 File 17e11 19r22 21r31 27r39 42r35 57r35 73r27 112r11
+15p2 first{6P6} 24r19 31r34 47m16 48r30 51r26 52m16 61m16 62r30
+16p2 last{6P6} 24r42 48m16 62m16 65r16 66m16 66r30
+19r1 File_Vide{13R6}
+21V12 Est_Vide{boolean} 21b12 21>21 25l7 25t15 30s16 46s10 60s10
+21r21 FileF{13R6} 24r13 24r36
+27U12 afficheliste 27b12 27>26 40l5 40t17 79s17
+27r26 maliste{13R6} 30r25 31r26
+28p9 ptint{6P6} 31m17 33r21 34r31 35m13 35r22
+42U11 ajouttete 42b11 42=21 42>41 55l9 55t18 88s17
+42r21 FileF{13R6} 46r19 47m10 48m10 48r24 51r20 52m10
+42i41 Elmt{integer} 47r36 52r36
+43p7 Pt_Int{6P6} 51m10 52r41
+57U12 ajoutfin 57b12 57=21 58>25 69l8 69t16 94s17
+57r21 FileF{13R6} 60r19 61m10 62m10 62r24 65r10 66m10 66r24
+58i25 Elmt{integer} 61r36 65r40
+71U14 Traiter 71b14 72>10 73=10 74=9 111l8 111t15 136s7
+72i10 ChoixF{integer} 77r12
+73r10 maliste{13R6} 79r30 88m27 94m26
+74b9 fini{boolean} 105m13
+75i3 elem{integer} 86m21 88r35 92m21 94r34
+112r1 maliste{13R6} 136m22 136r22
+113i1 choix{integer} 134m11 136r16
+114b1 fini{boolean} 136m30 136r30 138r17
+
