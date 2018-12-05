@@ -24,33 +24,58 @@ procedure tp2 is
 	return maliste = NULL;
   END est_vide;
 
-  PROCEDURE Insere_Fin(liste: IN OUT ptliste;
-                        Elmt : in integer)  IS
-  -- Cette procédure ajoute un element en fin de liste.
-      -- IN OUT
-         -- FileF: La Liste où l'element sera ajouté.
-      -- IN
-         -- Elt: L'élément à ajouter.
-
+  PROCEDURE Insere_tete(liste: IN OUT ptliste;
+                        n : in integer)  IS
+	ptint : ptliste;
    BEGIN
-      IF est_vide(FileF) THEN
-         liste := NEW Noeud'(Elmt,NULL);
-
+      IF est_vide(liste) THEN
+         liste := NEW noeud'(n,NULL);
       ELSE
-         while liste
+	ptint := liste;
+	 liste := new noeud'(n,ptint);	
+	
       END IF;
+   END Insere_tete;
 
-   END Insere_Fin;
   PROCEDURE  traiter (montab : IN OUT Tab ; n : integer) is
   indice : integer;
   BEGIN
 	indice := n mod 10;
-	if est_vide(tab(indice)) then
-		tab(i) := new noeud (n ,liste_vide)
+	if est_vide(montab(indice)) then
+		montab(indice) := new noeud'(n ,liste_vide);
 	else
-		insereenfin(tab(i),n);	
+		Insere_tete(montab(indice),n);	
 	end if;
   END traiter;
+
+ PROCEDURE  afficheliste (maliste : IN ptliste) is
+		ptint : ptliste;
+	begin
+        IF NOT Est_Vide(maliste) THEN
+		ptint := maliste;
+         WHILE NOT Est_Vide(ptint) LOOP
+            Put(Integer'Image(ptint.info));
+            ptint := ptint.Suiv;
+         END LOOP;
+	end if;	
+  END afficheliste;
+
+  PROCEDURE  affiche (montab : IN Tab) is
+  BEGIN
+	FOR i IN 0..9 LOOP	
+		if montab(i) = liste_vide then
+			put("---");put(Integer'Image(i));put("---");
+			New_line;
+		else
+			put("---");put(Integer'Image(i));put("---");
+			New_line;
+			afficheliste(montab(i));
+			New_line;
+		end if; 	
+	END LOOP;
+  END affiche;
+
+
 
 montab : Tab;
 fini : boolean := FALSE;		
@@ -60,9 +85,11 @@ begin
         Get(n) ;
 	fini := n = -1;
    while not fini loop	
-        put(n mod 10);
+	if n > 0 then 
+        	traiter(montab,n);
+	end if;
         Get(n) ;
 	fini := n = -1;
    end loop ;
-       --	affiche(montab);
+	affiche(montab);
 end tp2 ;
