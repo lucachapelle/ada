@@ -97,12 +97,8 @@ maliste : ptNoeud := mafile.first;
 ptprec : ptNoeud := mafile.first;
 trouve : boolean := False;
 Begin
-	if maliste.info = ELT  then
-		trouve := true;
-	end if;
-	maliste := maliste.suiv;
-	while not (maliste = NUll) loop
-
+	while not (maliste = NUll) loop			
+		mafile.last :=maliste;	
 		if maliste.info = ELT   then
 			ptprec.suiv := maliste.suiv;
 			maliste := maliste.suiv;
@@ -114,6 +110,7 @@ Begin
 
 
 	end loop;
+
 	if not trouve then 
 		put ("pas d element dans la liste");
 	end if;
